@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  chat-server:
+    build:
+      context: ./
+    ports:
+      - "4333:4333"
+  netshoot:
+    image: nicolaka/netshoot
+    network_mode: "service:chat-server"
+    command: ["tcpdump"]
